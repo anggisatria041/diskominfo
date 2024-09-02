@@ -7,6 +7,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\Lp_PenjualanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AplikasiController;
+use App\Http\Controllers\KegiatanController;
 
 
 /*
@@ -49,6 +50,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/update', [AplikasiController::class, 'update'])->name('aplikasi.update');
         Route::delete('/{id}', [AplikasiController::class, 'destroy'])->name('aplikasi.destroy');
         Route::post('/data_list', [AplikasiController::class, 'data_list'])->name('aplikasi.data_list');
+    });
+     // Aplikasi
+    Route::prefix('kegiatan')->group(function () {
+        Route::get('/', [KegiatanController::class, 'index'])->name('kegiatan.index');
+        Route::post('/data_list', [KegiatanController::class, 'data_list'])->name('kegiatan.data_list');
     });
 
     // Laporan Penjualan
